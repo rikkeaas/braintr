@@ -13,7 +13,7 @@ public class BoxGenerator : MonoBehaviour
     private List<GameObject> boxes;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         boxes = new List<GameObject>();
         float startPosX = - (lvlSize / 2f) * boxSize;
@@ -37,5 +37,10 @@ public class BoxGenerator : MonoBehaviour
                 boxes.Add(newBox);
             }
         }
+    }
+
+    public List<GameObject> GetBoxList()
+    {
+        return boxes;
     }
 }

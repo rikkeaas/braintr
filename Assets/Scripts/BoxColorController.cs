@@ -6,13 +6,19 @@ public class BoxColorController : MonoBehaviour
 {
 
     private List<Color> colors = new List<Color>();
+    private List<GameObject> boxes;
 
     void Start()
     {
         colors.Add(Color.white);
         colors.Add(Color.red);
         colors.Add(Color.green);
+
+        boxes = gameObject.GetComponent<BoxGenerator>().GetBoxList();
     }
+
+    
+
 
     void Update()
     {
