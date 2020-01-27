@@ -7,32 +7,29 @@ public class ColorHandler : MonoBehaviour
     
     private Color boxColor = Color.white;
     private Color goalColor;
+    private int colorIdx = 0;
 
-    // void Start()
-    // {
-    //     colors.Add(Color.white);
-    //     colors.Add(Color.red);
-    //     colors.Add(Color.green);
-    // }
+
 
     public void SetGoalColor(Color newColor)
     {
         goalColor = newColor;
     }
 
-    
-    void Update()
+    public int GetAndIncrementColIdx()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
- 
-        if(Physics.Raycast (ray, out hit))
-        {
-            // if (hit.gameObjec != null)
-            // {
+        if (colorIdx < 2) colorIdx++;
+        else colorIdx = 0;
 
-            // }
-        }
+        return colorIdx;
     }
+
+    public void PlayerChangeColor(Color newColor)
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = newColor;
+    }
+
+    
+    
 
 }

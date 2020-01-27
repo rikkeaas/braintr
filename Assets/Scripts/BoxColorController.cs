@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class BoxColorController : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private List<Color> colors = new List<Color>();
+
     void Start()
     {
-        
+        colors.Add(Color.white);
+        colors.Add(Color.red);
+        colors.Add(Color.green);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
+    
+            if(hit)
+            {
+                Debug.Log("Hit something");
+                
+                ColorHandler currBox = hit.collider.GetComponent<ColorHandler>();
+                int colIdx = currBox.GetAndIncrementColIdx();
+                currBox.PlayerChangeColor(colors[colIdx]);
+                
+            }
+            else
+            {
+                Debug.Log("Didnt hit??");
+            }
+        }
     }
 }
