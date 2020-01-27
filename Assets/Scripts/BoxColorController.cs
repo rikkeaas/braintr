@@ -8,6 +8,9 @@ public class BoxColorController : MonoBehaviour
     private List<Color> colors = new List<Color>();
     private List<GameObject> boxes;
 
+    private bool playState = false;
+    private float timer = 0f;
+
     void Start()
     {
         colors.Add(Color.white);
@@ -22,6 +25,19 @@ public class BoxColorController : MonoBehaviour
 
     void Update()
     {
+        if (!playState)
+        {
+            if (timer < 3)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                WhiteOut();
+                playState = true;
+            }
+            return;
+        }
         if (Input.GetMouseButtonDown(0)) 
         {
             Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -40,6 +56,15 @@ public class BoxColorController : MonoBehaviour
             {
                 Debug.Log("Didnt hit??");
             }
+        }
+    }
+
+    private void WhiteOut()
+    {
+        foreach (var box in boxes)
+        {
+            ColorHandler currHandler = box.GetComponent<ColorHandler>();
+            currHandler.ResetBox();
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ColorHandler : MonoBehaviour
 {
     
-    private Color boxColor = Color.white;
     private Color goalColor;
     private int colorIdx = 0;
 
@@ -24,9 +23,20 @@ public class ColorHandler : MonoBehaviour
         return colorIdx;
     }
 
-    public void PlayerChangeColor(Color newColor)
+    public void ResetBox()
+    {
+        colorIdx = 0;
+        ChangeColor(Color.white);
+    }
+
+    private void ChangeColor(Color newColor)
     {
         gameObject.GetComponent<SpriteRenderer>().color = newColor;
+    }
+
+    public void PlayerChangeColor(Color newColor)
+    {
+        ChangeColor(newColor);
     }
 
     
