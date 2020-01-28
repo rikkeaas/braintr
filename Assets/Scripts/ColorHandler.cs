@@ -13,6 +13,7 @@ public class ColorHandler : MonoBehaviour
     public void SetGoalColor(Color newColor)
     {
         goalColor = newColor;
+        ChangeColor(newColor);
     }
 
     public int GetAndIncrementColIdx()
@@ -39,6 +40,10 @@ public class ColorHandler : MonoBehaviour
         ChangeColor(newColor);
     }
 
+    public bool HasGoalColor()
+    {
+        return gameObject.GetComponent<SpriteRenderer>().color.Equals(goalColor);
+    }
     
     
 

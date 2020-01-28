@@ -25,14 +25,14 @@ public class BoxGenerator : MonoBehaviour
             {
                 GameObject newBox = Instantiate(paintBoxPrefab, new Vector2(startPosX + (x * boxSize), startPosY + (y * boxSize)), Quaternion.identity);
                 float rand = Random.Range(0f, 1f);
-                
+                ColorHandler currHandler = newBox.GetComponent<ColorHandler>();
                 if (rand < 0.5f)
                 {
-                    newBox.GetComponent<SpriteRenderer>().color = color1;
+                    currHandler.SetGoalColor(color1);
                 }
                 else
                 {
-                    newBox.GetComponent<SpriteRenderer>().color = color2;
+                    currHandler.SetGoalColor(color2);
                 }
                 boxes.Add(newBox);
             }

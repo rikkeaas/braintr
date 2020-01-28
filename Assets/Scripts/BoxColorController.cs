@@ -38,25 +38,25 @@ public class BoxColorController : MonoBehaviour
             }
             return;
         }
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
+        // if (Input.GetMouseButtonDown(0)) 
+        // {
+        //     Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //     RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
     
-            if(hit)
-            {
-                Debug.Log("Hit something");
+        //     if(hit)
+        //     {
+        //         Debug.Log("Hit something");
                 
-                ColorHandler currBox = hit.collider.GetComponent<ColorHandler>();
-                int colIdx = currBox.GetAndIncrementColIdx();
-                currBox.PlayerChangeColor(colors[colIdx]);
+        //         ColorHandler currBox = hit.collider.GetComponent<ColorHandler>();
+        //         int colIdx = currBox.GetAndIncrementColIdx();
+        //         currBox.PlayerChangeColor(colors[colIdx]);
                 
-            }
-            else
-            {
-                Debug.Log("Didnt hit??");
-            }
-        }
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Didnt hit??");
+        //     }
+        // }
     }
 
     private void WhiteOut()
